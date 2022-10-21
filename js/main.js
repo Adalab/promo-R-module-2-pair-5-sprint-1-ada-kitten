@@ -1,14 +1,42 @@
 "use strict"
-
+/*-------------Sección desplegable creación gatitos------------------*/
 const visibleForm = document.querySelector(".js-new-form");
+const crossBtn = document.querySelector(".js-cross-btn");
 
-if (visibleForm.classList.contains('collapsed')) {
-    visibleForm.classList.remove("collapsed");
+crossBtn.addEventListener('click', (event) => {
+    event.preventDefault();
+    if (visibleForm.classList.contains('collapsed')) {
+        visibleForm.classList.remove("collapsed");
+    
+      } else {
+        visibleForm.classList.add("collapsed");
+      }
+})
+/*--------------------------- Formulario nuevo gatito------------------------*/
 
-  } else {
-    visibleForm.classList.add("collapsed");
-  }
+const addBtn = document.querySelector('.js-btn-add');
+const inputDesc = document.querySelector('.js-input-desc');
+const inputPhoto = document.querySelector('.js-input-photo');
+const inputName = document.querySelector('.js-input-name');
+const labelMesageError = document.querySelector('.js-label-error');
 
+addBtn.addEventListener('click', (event) => {
+    //event.preventDefault();
+    const valueDesc = inputDesc.value;
+    const valuePhoto = inputPhoto.value;
+    const valueName = inputName.value;
+
+if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+  labelMesageError.innerHTML = 'Debe rellenar todos los valores';
+} else {
+  //completa el código
+}
+
+})
+
+
+
+/*-------------------- tarjeta gatitos -----------------------------*/
 const dataAddClass = document.querySelector(".list");
 dataAddClass.classList.add("js-list");
 
@@ -34,29 +62,22 @@ const kittenThreeBreed = 'British Shorthair';
 const kittenThreeDesc = 'Glotón, juguetón, le gusta estar tranquilo y que nadie le moleste.Es una maravilla acariciarle!';
 const kittenThree = `<li class="card"><img class="card_img" src="${kittenThreeImg}"alt="gatito"/><h3 class="card_title">${kittenThreeName.toUpperCase()}</h3><h4 class="card_race">${kittenThreeBreed}</h4><p class="card_description">${kittenThreeDesc}</p></li>`; 
 
-//jsListClass.innerHTML = kittenOne + kittenTwo + kittenThree;
-
+/*---------------------------- Buscador de gatitos ------------------------------------*/
 const input_search_desc = document.querySelector(".js_in_search_desc");
 
-input_search_desc.value = "tranquilo";
+input_search_desc.value = "Ruiseño";
 
 const descrSearchText = input_search_desc.value;
 
 if (kittenOneDesc.includes(descrSearchText)) {
     jsListClass.innerHTML = kittenOne + kittenTwo + kittenThree;
-}
-    
-if( kittenOneDesc.includes(descrSearchText) ) {
+} else if( kittenOneDesc.includes(descrSearchText) ) {
     jsListClass.innerHTML = kittenOne;
-}
-    
-    if( kittenTwoDesc.includes(descrSearchText) ) {
+} else if( kittenTwoDesc.includes(descrSearchText) ) {
         jsListClass.innerHTML = kittenTwo;
-    }
-    
-    if( kittenThreeDesc.includes(descrSearchText) ) {
+} else if( kittenThreeDesc.includes(descrSearchText) ) {
         jsListClass.innerHTML = kittenThree;
-    }
+}
     
 
 let html = '';
