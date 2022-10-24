@@ -1,42 +1,67 @@
 "use strict"
+
 /*-------------Sección desplegable creación gatitos------------------*/
-const visibleForm = document.querySelector(".js-new-form");
+
+const newFormElement = document.querySelector(".js-new-form");
 const crossBtn = document.querySelector(".js-cross-btn");
 
-crossBtn.addEventListener('click', (event) => {
-    event.preventDefault();
-    if (visibleForm.classList.contains('collapsed')) {
-        visibleForm.classList.remove("collapsed");
+// crossBtn.addEventListener('click', (event) => {
+//     event.preventDefault();
+//     if (newFormElement.classList.contains('collapsed')) {
+//         newFormElement.classList.remove("collapsed");
     
-      } else {
-        visibleForm.classList.add("collapsed");
-      }
-})
+//       } else {
+//         newFormElement.classList.add("collapsed");
+//       }
+// })
+
+function showNewCatForm() {
+  newFormElement.classList.remove('collapsed');
+}
+function hideNewCatForm() {
+  newFormElement.classList.add('collapsed');
+}
+
+function handleClickNewCatForm(event) {
+  event.preventDefault();
+  if (newFormElement.classList.contains('collapsed')) {
+    showNewCatForm();
+  } else {
+    hideNewCatForm();
+  }
+}
+  
+crossBtn.addEventListener('click', handleClickNewCatForm);
+
 /*--------------------------- Formulario nuevo gatito------------------------*/
 
+const form = document.querySelector('.form');
 const addBtn = document.querySelector('.js-btn-add');
+const cancelBtn = document.querySelector('.js-btn-cancel');
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
 const labelMesageError = document.querySelector('.js-label-error');
+const valueDesc = inputDesc.value;
+const valuePhoto = inputPhoto.value;
+const valueName = inputName.value;
 
 addBtn.addEventListener('click', (event) => {
-    //event.preventDefault();
-    const valueDesc = inputDesc.value;
-    const valuePhoto = inputPhoto.value;
-    const valueName = inputName.value;
-
-if (valueDesc === '' || valuePhoto === '' || valueName === '') {
-  labelMesageError.innerHTML = 'Debe rellenar todos los valores';
-} else {
-  //completa el código
-}
+  event.preventDefault();
+  if (valueDesc === '' || valuePhoto === '' || valueName === '') {
+    labelMesageError.innerHTML = 'Debe rellenar todos los valores';
+  } 
 
 })
 
+cancelBtn.addEventListener('click', (ev) => {
+  ev.preventDefault();
+  form.reset();
+})
 
 
 /*-------------------- tarjeta gatitos -----------------------------*/
+
 const dataAddClass = document.querySelector(".list");
 dataAddClass.classList.add("js-list");
 
@@ -63,6 +88,7 @@ const kittenThreeDesc = 'Glotón, juguetón, le gusta estar tranquilo y que nadi
 const kittenThree = `<li class="card"><img class="card_img" src="${kittenThreeImg}"alt="gatito"/><h3 class="card_title">${kittenThreeName.toUpperCase()}</h3><h4 class="card_race">${kittenThreeBreed}</h4><p class="card_description">${kittenThreeDesc}</p></li>`; 
 
 /*---------------------------- Buscador de gatitos ------------------------------------*/
+
 const input_search_desc = document.querySelector(".js_in_search_desc");
 
 input_search_desc.value = "Ruiseño";
