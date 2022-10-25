@@ -1,5 +1,5 @@
 "use strict"
-
+debugger;
 /*-------------Sección desplegable creación gatitos------------------*/
 
 const newFormElement = document.querySelector(".js-new-form");
@@ -34,35 +34,49 @@ function handleClickNewCatForm(event) {
 crossBtn.addEventListener('click', handleClickNewCatForm);
 
 /*--------------------------- Formulario nuevo gatito------------------------*/
-
+/*Declaramos nuestras variables con los elementos seleccionados*/
 const form = document.querySelector('.form');
 const addBtn = document.querySelector('.js-btn-add');
 const cancelBtn = document.querySelector('.js-btn-cancel');
 const inputDesc = document.querySelector('.js-input-desc');
 const inputPhoto = document.querySelector('.js-input-photo');
 const inputName = document.querySelector('.js-input-name');
+const inputBreed = document.querySelector('.js-input-breed');
+const dataAddClass = document.querySelector(".list");
 const labelMesageError = document.querySelector('.js-label-error');
-const valueDesc = inputDesc.value;
-const valuePhoto = inputPhoto.value;
-const valueName = inputName.value;
 
+/* Creamos nuestra función, que nos sirve a modo de plantilla. Tenemos unos parametros que no están definidos, pero que empleamos dentro de nuestras instrucciones.*/
+function renderKitten(url, desc, name, race) {
+  const newKitten = `<li class="card"> <article> <img class="card_img" src="${url}" alt="gatito"/><h3class="card_title">${name.toUpperCase()}</h3><h4 class="card_race">${race}</h4><p class="card_description">${desc}</p></article></li>`;
+  return newKitten;
+}
+/*Creamos nuestro evento donde guardaremos nuestras constantes con los valores de los inputs*/
 addBtn.addEventListener('click', (event) => {
   event.preventDefault();
+  const valueBreed = inputBreed.value;
+  const valueDesc = inputDesc.value;
+  const valuePhoto = inputPhoto.value;
+  const valueName = inputName.value;
+  /*Condicionales para que el navegador sepa qué hacer*/
   if (valueDesc === '' || valuePhoto === '' || valueName === '') {
     labelMesageError.innerHTML = 'Debe rellenar todos los valores';
-  } 
-
+  } else {
+    /*Le decimos que añada un nuevo <li></li> a la lista de gatitos. Llamamos a nuestra función plantilla con las variables que contienen los valores de los inputs*/
+    dataAddClass.innerHTML += renderKitten(valuePhoto, valueDesc, valueName, valueBreed);
+  }
 })
 
 cancelBtn.addEventListener('click', (ev) => {
   ev.preventDefault();
   form.reset();
+  /*Lo que hacemos en el siguiente paso es usar la función setTimeout. Con esto le decimos que ejecute la función hideNewCatForm al cabo de medio segundo. Los segundos se especifican en milisegundos*/
+  setTimeout(hideNewCatForm, 500);
 })
 
 
 /*-------------------- tarjeta gatitos -----------------------------*/
 
-const dataAddClass = document.querySelector(".list");
+
 dataAddClass.classList.add("js-list");
 
 const jsListClass = document.querySelector(".js-list");
