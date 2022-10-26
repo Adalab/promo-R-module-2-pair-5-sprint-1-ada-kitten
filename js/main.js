@@ -1,6 +1,7 @@
 "use strict"
 debugger;
-/*-------------Sección desplegable creación gatitos------------------*/
+
+/*---------------------- SECCIÓN DESPLEGABLE CREACIÓN DE GATITOS -------------------------------------*/
 
 const newFormElement = document.querySelector(".js-new-form");
 const crossBtn = document.querySelector(".js-cross-btn");
@@ -33,7 +34,8 @@ function handleClickNewCatForm(event) {
   
 crossBtn.addEventListener('click', handleClickNewCatForm);
 
-/*--------------------------- Formulario nuevo gatito------------------------*/
+/*---------------------------- FORMULARIO NUEVO GATITO ----------------------------------------------*/
+
 /*Declaramos nuestras variables con los elementos seleccionados*/
 const form = document.querySelector('.form');
 const addBtn = document.querySelector('.js-btn-add');
@@ -74,7 +76,7 @@ cancelBtn.addEventListener('click', (ev) => {
 })
 
 
-/*-------------------- tarjeta gatitos -----------------------------*/
+/*---------------------------------------- TARJETA GATITOS ---------------------------------------------------*/
 
 
 dataAddClass.classList.add("js-list");
@@ -101,7 +103,32 @@ const kittenThreeBreed = 'British Shorthair';
 const kittenThreeDesc = 'Glotón, juguetón, le gusta estar tranquilo y que nadie le moleste.Es una maravilla acariciarle!';
 const kittenThree = `<li class="card"><img class="card_img" src="${kittenThreeImg}"alt="gatito"/><h3 class="card_title">${kittenThreeName.toUpperCase()}</h3><h4 class="card_race">${kittenThreeBreed}</h4><p class="card_description">${kittenThreeDesc}</p></li>`; 
 
-/*---------------------------- Buscador de gatitos ------------------------------------*/
+
+/*------------------------------------------ OBJETOS GATITOS ----------------------------------------------------*/
+
+const kittenData_1 = {
+  image: 'https://ychef.files.bbci.co.uk/976x549/p07ryyyj.jpg',
+  name: 'Anastacio',
+  desc: 'Ruiseño, juguetón, le guta estar tranquilo y que nadie le moleste. Es una maravilla acariciarle!',
+  race: 'British Shorthair',
+};
+
+const kittenData_2 = {
+  image: 'https://images.emedicinehealth.com/images/article/main_image/cat-scratch-disease.jpg',
+  name: 'Fiona',
+  desc: 'British Shorthair',
+  race: 'Ruiseño, juguetona, le gusta estar tranquilo y que nadie le moleste.Es una maravilla acariciarle!',
+};
+
+const kittenData_3 = {
+  image: 'https://media-cldnry.s-nbcnews.com/image/upload/t_nbcnews-fp-1200-630,f_auto,q_auto:best/newscms/2019_39/3021711/190923-cat-pet-stock-cs-1052a.jpg',
+  name: 'Cielo',
+  desc: 'British Shorthair',
+  race: 'Glotón, juguetón, le gusta estar tranquilo y que nadie le moleste.Es una maravilla acariciarle!',
+};
+
+
+/*----------------------------------------- BUSCADOR DE GATITOS -------------------------------------------------*/
 
 const input_search_desc = document.querySelector(".js_in_search_desc");
 
@@ -126,4 +153,4 @@ if (kittenOneBreed === "") {
     html = `No se ha especificado la raza`;
   } else {
     html = kittenOneBreed;
-  }
+}
