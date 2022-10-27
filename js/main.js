@@ -1,5 +1,4 @@
 "use strict"
-debugger;
 
 /*---------------------- SECCIÓN DESPLEGABLE CREACIÓN DE GATITOS -------------------------------------*/
 
@@ -127,25 +126,35 @@ const kittenData_3 = {
   race: 'Glotón, juguetón, le gusta estar tranquilo y que nadie le moleste.Es una maravilla acariciarle!',
 };
 
+const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
+console.log(kittenDataList);
+
+
 
 /*----------------------------------------- BUSCADOR DE GATITOS -------------------------------------------------*/
 
-const input_search_desc = document.querySelector(".js_in_search_desc");
+const input_desc = document.querySelector(".js_in_search_desc");
+const input_breed = document.querySelector('.js_input_breed');
+const btn_search = document.querySelector('.js-button-search');
 
-input_search_desc.value = "Ruiseño";
 
-const descrSearchText = input_search_desc.value;
+const descrSearchText = input_desc.value
 
-if (kittenOneDesc.includes(descrSearchText)) {
+const filterKitten = (event) => {
+  debugger;
+  event.preventDefault;
+  if (kittenOneDesc.includes(descrSearchText)) {
     jsListClass.innerHTML = kittenOne + kittenTwo + kittenThree;
-} else if( kittenOneDesc.includes(descrSearchText) ) {
+  } else if (kittenOneDesc.includes(descrSearchText)) {
     jsListClass.innerHTML = kittenOne;
-} else if( kittenTwoDesc.includes(descrSearchText) ) {
-        jsListClass.innerHTML = kittenTwo;
-} else if( kittenThreeDesc.includes(descrSearchText) ) {
-        jsListClass.innerHTML = kittenThree;
+  } else if (kittenTwoDesc.includes(descrSearchText)) {
+    jsListClass.innerHTML = kittenTwo;
+  } else if (kittenThreeDesc.includes(descrSearchText)) {
+    jsListClass.innerHTML = kittenThree;
+  }
 }
-    
+
+btn_search.addEventListener('click', filterKitten);
 
 let html = '';
 
