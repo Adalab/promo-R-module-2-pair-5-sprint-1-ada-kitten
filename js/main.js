@@ -1,5 +1,4 @@
 "use strict"
-debugger;
 
 /*---------------------- SECCIÓN DESPLEGABLE CREACIÓN DE GATITOS -------------------------------------*/
 
@@ -46,6 +45,7 @@ const inputName = document.querySelector('.js-input-name');
 const inputBreed = document.querySelector('.js-input-breed');
 const dataAddClass = document.querySelector(".list");
 const labelMesageError = document.querySelector('.js-label-error');
+
 
 /* Creamos nuestra función, que nos sirve a modo de plantilla. Tenemos unos parametros que no están definidos, pero que empleamos dentro de nuestras instrucciones.*/
 function renderKitten(url, desc, name, race) {
@@ -127,24 +127,28 @@ const kittenData_3 = {
   race: 'Glotón, juguetón, le gusta estar tranquilo y que nadie le moleste.Es una maravilla acariciarle!',
 };
 
-
+const kittenDataList = [kittenData_1, kittenData_2, kittenData_3];
 /*----------------------------------------- BUSCADOR DE GATITOS -------------------------------------------------*/
 
 const input_search_desc = document.querySelector(".js_in_search_desc");
-
-input_search_desc.value = "Ruiseño";
-
+const searchBtn = document.querySelector('.js_button_search');
+const listElement = document.querySelector('.js-u-list');
 const descrSearchText = input_search_desc.value;
 
-if (kittenOneDesc.includes(descrSearchText)) {
-    jsListClass.innerHTML = kittenOne + kittenTwo + kittenThree;
-} else if( kittenOneDesc.includes(descrSearchText) ) {
-    jsListClass.innerHTML = kittenOne;
-} else if( kittenTwoDesc.includes(descrSearchText) ) {
-        jsListClass.innerHTML = kittenTwo;
-} else if( kittenThreeDesc.includes(descrSearchText) ) {
-        jsListClass.innerHTML = kittenThree;
-}
+const filterKitten = (event) => {
+  event.preventDefault();
+  if (kittenData_1.desc.includes(descrSearchText)) {
+    listElement.innerHTML += kittenOne;
+  }
+  if (kittenData_2.desc.includes(descrSearchText)) {
+    listElement.innerHTML += kittenTwo;
+  }
+  if (kittenData_3.desc.includes(descrSearchText)) {
+    listElement.innerHTML += kittenThree;
+  }
+};
+
+searchBtn.addEventListener('click', filterKitten);
     
 
 let html = '';
